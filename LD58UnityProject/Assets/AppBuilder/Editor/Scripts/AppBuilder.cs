@@ -36,9 +36,7 @@ namespace AppBuilder.Editor {
          var result = new Dictionary<string, string>();
          var commandLineArgs = Environment.GetCommandLineArgs();
          for (var i = 0; i < commandLineArgs.Length; i++) {
-            var argKey = commandLineArgs[i][1..];
-
-            if (argKey.StartsWith("-") && i < commandLineArgs.Length - 1) {
+            if (commandLineArgs[i].StartsWith("-") && i < commandLineArgs.Length - 1) {
                result.Add(commandLineArgs[i][1..], commandLineArgs[i + 1]);
             }
          }
