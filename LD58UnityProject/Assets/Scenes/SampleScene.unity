@@ -543,7 +543,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
   m_FlipX: 0
@@ -845,6 +845,18 @@ MonoBehaviour:
   _allJobs:
   - {fileID: 11400000, guid: 582703a949fa4fc4f9eeb879c85acb6b, type: 2}
   - {fileID: 11400000, guid: e72f2df756909ee4d9d0ca65a1a3bd77, type: 2}
+  _allNpcOutfits:
+  - {fileID: 11400000, guid: d47a7aaa057991e4cafc6f89e6708d57, type: 2}
+  - {fileID: 11400000, guid: 189c069859d223b4cb354bf6eb44ea7a, type: 2}
+  - {fileID: 11400000, guid: 656c346383fd7274db389a2138d5c274, type: 2}
+  - {fileID: 11400000, guid: 8028125495513274281d0a6ee2af541b, type: 2}
+  - {fileID: 11400000, guid: b50e497050779c948bd8f36a31cb1ecc, type: 2}
+  - {fileID: 11400000, guid: a29719a0e23b0f34c8a281dec4e78d5a, type: 2}
+  - {fileID: 11400000, guid: 3aa5c361a3f77ca48a267fa635563dad, type: 2}
+  - {fileID: 11400000, guid: 1b905a6ea01a64345bfa5e4d218f0b5c, type: 2}
+  - {fileID: 11400000, guid: 7ca45fd7db781414aa6217aad9e1f781, type: 2}
+  - {fileID: 11400000, guid: 93a87a0542499284fa4688f5bcf54352, type: 2}
+  - {fileID: 11400000, guid: 0f1bef5b70532c544a60fdab1c219d6e, type: 2}
   _npcCountToGenerate: 2
 --- !u!4 &1826691580
 Transform:

@@ -114,7 +114,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 55
+        y: 70
         width: 1
         height: 4
       alignment: 9
@@ -136,7 +136,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 48
+        y: 63
         width: 1
         height: 4
       alignment: 9
@@ -158,7 +158,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 34
+        y: 48
         width: 4
         height: 12
       alignment: 7
@@ -180,7 +180,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 26
+        y: 41
         width: 6
         height: 5
       alignment: 7
@@ -202,7 +202,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 13
+        y: 28
         width: 1
         height: 10
       alignment: 9
@@ -224,7 +224,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 2
+        y: 17
         width: 2
         height: 8
       alignment: 9
@@ -237,6 +237,138 @@ TextureImporter:
       bones: []
       spriteID: 15d4c49a1e1e4514bbf3ce8509b8d581
       internalID: 215767195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npc_upperarm
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 64
+        width: 2
+        height: 3
+      alignment: 9
+      pivot: {x: 0.75, y: 0.8333333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 054a8624a9973794f9fc582d85b08cd8
+      internalID: 2139802657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npc_upperbody
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 56
+        width: 4
+        height: 4
+      alignment: 9
+      pivot: {x: 0.5, y: -0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89e2e5f5a0d23f342a86cf70d9e7ab9f
+      internalID: 1080091157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npc_head
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 43
+        width: 2
+        height: 3
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7fec270df214da4e8cba2beecd29d4d
+      internalID: 469301258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npc_upperleg
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 35
+        width: 1
+        height: 3
+      alignment: 9
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bfc9ac3667e3d5449206bf3eda00b54
+      internalID: 554569564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npc_lowerleg
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 22
+        width: 2
+        height: 3
+      alignment: 9
+      pivot: {x: 0.75, y: 0.8333333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f3507382e974fb468ba64f52c161adc
+      internalID: -1836355201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f3b569e7fac0c4d82d15f794dac16d
+      internalID: 1506465165
       vertices: []
       indices: 
       edges: []
@@ -258,6 +390,12 @@ TextureImporter:
       head: -442195187
       lowerarm: 1289817312
       lowerleg: 215767195
+      npc_head: 469301258
+      npc_lowerleg: -1836355201
+      npc_upperarm: 2139802657
+      npc_upperbody: 1080091157
+      npc_upperleg: 554569564
+      shadow: 1506465165
       upperarm: -1584464259
       upperbody: 948060826
       upperleg: 289622001
