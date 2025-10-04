@@ -1,4 +1,5 @@
 using LD58.Characters.Data;
+using System.Linq;
 using UnityEngine;
 
 namespace LD58.Characters.NpcBehaviours
@@ -29,5 +30,7 @@ namespace LD58.Characters.NpcBehaviours
 
             return true;
         }
+
+        public bool HasBehaviour( NpcBehaviour npcBehaviour ) => _behaviours.Contains( npcBehaviour );
     }
 }

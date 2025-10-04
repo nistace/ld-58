@@ -22,7 +22,7 @@ namespace LD58.Characters.Data
         public int Money => _money;
         public Job Job => _job;
         public Vector3 CurrentLocation { get; set; }
-        public EStates State { get; set; }
+        public EStates State { get; private set; }
 
         public NpcInfo( Location home, int money, Job job )
         {
@@ -32,5 +32,17 @@ namespace LD58.Characters.Data
         }
 
         public bool HasStates( EStates state ) => ( int )( State & state ) == ( int )state;
+
+        public void ChangeStates( EStates states, bool enable )
+        {
+            if( enable )
+            {
+                State |= states;
+            }
+            else
+            {
+                State &= ~states;
+            }
+        }
     }
 }

@@ -114,7 +114,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 70
+        y: 506
         width: 1
         height: 4
       alignment: 9
@@ -136,7 +136,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 63
+        y: 494
         width: 1
         height: 4
       alignment: 9
@@ -158,9 +158,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 48
+        y: 476
         width: 4
-        height: 12
+        height: 11
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,7 +180,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 41
+        y: 461
         width: 6
         height: 5
       alignment: 7
@@ -202,7 +202,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 28
+        y: 442
         width: 1
         height: 10
       alignment: 9
@@ -224,7 +224,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 17
+        y: 425
         width: 2
         height: 8
       alignment: 9
@@ -245,12 +245,12 @@ TextureImporter:
       name: npc_upperarm
       rect:
         serializedVersion: 2
-        x: 6
-        y: 64
+        x: 2
+        y: 501
         width: 2
-        height: 3
+        height: 2
       alignment: 9
-      pivot: {x: 0.75, y: 0.8333333}
+      pivot: {x: 0.75, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -267,8 +267,8 @@ TextureImporter:
       name: npc_upperbody
       rect:
         serializedVersion: 2
-        x: 9
-        y: 56
+        x: 2
+        y: 469
         width: 4
         height: 4
       alignment: 9
@@ -289,8 +289,8 @@ TextureImporter:
       name: npc_head
       rect:
         serializedVersion: 2
-        x: 11
-        y: 43
+        x: 2
+        y: 455
         width: 2
         height: 3
       alignment: 7
@@ -311,8 +311,8 @@ TextureImporter:
       name: npc_upperleg
       rect:
         serializedVersion: 2
-        x: 6
-        y: 35
+        x: 2
+        y: 436
         width: 1
         height: 3
       alignment: 9
@@ -333,8 +333,8 @@ TextureImporter:
       name: npc_lowerleg
       rect:
         serializedVersion: 2
-        x: 7
-        y: 22
+        x: 2
+        y: 419
         width: 2
         height: 3
       alignment: 9
@@ -356,11 +356,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 2
+        y: 404
         width: 12
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -369,6 +369,94 @@ TextureImporter:
       bones: []
       spriteID: f4f3b569e7fac0c4d82d15f794dac16d
       internalID: 1506465165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npc_lowerarm
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 490
+        width: 1
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba42625fb6ab2045a17f906244a1cae
+      internalID: 1302346146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_panel
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 370
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 7, z: 6, w: 8}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ae6a7b88c1c6cc459367769d7a3b866
+      internalID: -1328400423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_button
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 337
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 6, z: 6, w: 6}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b743433489ea154793cb9172880127d
+      internalID: -784749520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_picture
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 304
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccdac2e8a917cef4ab313e1e2535f893
+      internalID: -1534093194
       vertices: []
       indices: 
       edges: []
@@ -391,11 +479,15 @@ TextureImporter:
       lowerarm: 1289817312
       lowerleg: 215767195
       npc_head: 469301258
+      npc_lowerarm: 1302346146
       npc_lowerleg: -1836355201
       npc_upperarm: 2139802657
       npc_upperbody: 1080091157
       npc_upperleg: 554569564
       shadow: 1506465165
+      ui_button: -784749520
+      ui_panel: -1328400423
+      ui_picture: -1534093194
       upperarm: -1584464259
       upperbody: 948060826
       upperleg: 289622001

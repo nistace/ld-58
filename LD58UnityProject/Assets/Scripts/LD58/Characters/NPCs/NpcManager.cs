@@ -12,19 +12,18 @@ namespace LD58.Characters
     {
         [SerializeField] private NpcCharacter _npcCharacterPrefab;
 
-        private List<Npc> ActiveNpcList { get; } = new();
+        private List<NpcCharacter> ActiveNpcList { get; } = new();
 
-        public Npc CreateNpc( Location home, Job job, int money, ColorableGroupsConfiguration npcOutfit )
+        public NpcCharacter CreateNpc( Location home, Job job, int money, ColorableGroupsConfiguration outfit )
         {
             var npcCharacter = Instantiate( _npcCharacterPrefab, home.Entrance.position, quaternion.identity );
-            npcCharacter.OutfitBodyParts.Colorize( npcOutfit );
 
-            var npcInfo = new NpcInfo( home, money, job );
-            var newNpc = new Npc( npcInfo, npcCharacter );
+            npcCharacter.Info = new NpcInfo( home, money, job );
+            npcCharacter.SetOutfit( outfit );
 
-            ActiveNpcList.Add( newNpc );
+            ActiveNpcList.Add( npcCharacter );
 
-            return newNpc;
+            return npcCharacter;
         }
 
         private void Update()
