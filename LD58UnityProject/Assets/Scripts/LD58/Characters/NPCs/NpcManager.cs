@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using LD58.Characters.Data;
-using LD58.Jobs;
-using LD58.Locations;
 using LD58.Misc;
 using Unity.Mathematics;
 using UnityEngine;
@@ -14,11 +12,11 @@ namespace LD58.Characters
 
         private List<NpcCharacter> ActiveNpcList { get; } = new();
 
-        public NpcCharacter CreateNpc( Location home, Job job, int money, ColorableGroupsConfiguration outfit )
+        public NpcCharacter CreateNpc( NpcInfo info, ColorableGroupsConfiguration outfit )
         {
-            var npcCharacter = Instantiate( _npcCharacterPrefab, home.Entrance.position, quaternion.identity );
+            var npcCharacter = Instantiate( _npcCharacterPrefab, info.Home.Entrance.position, quaternion.identity );
 
-            npcCharacter.Info = new NpcInfo( home, money, job );
+            npcCharacter.Info = info;
             npcCharacter.SetOutfit( outfit );
 
             ActiveNpcList.Add( npcCharacter );

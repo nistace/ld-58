@@ -14,6 +14,7 @@ namespace LD58.Characters.Data
             Talking = 1 << 0
         }
 
+        [SerializeField] private string _name;
         [SerializeField] private Location _home;
         [SerializeField] private int _money;
         [SerializeField] private Job _job;
@@ -24,11 +25,12 @@ namespace LD58.Characters.Data
         public Vector3 CurrentLocation { get; set; }
         public EStates State { get; private set; }
 
-        public NpcInfo( Location home, int money, Job job )
+        public NpcInfo( Location home, int money, Job job, string name )
         {
             _home = home;
             _money = money;
             _job = job;
+            _name = name;
         }
 
         public bool HasStates( EStates state ) => ( int )( State & state ) == ( int )state;

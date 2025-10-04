@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2be88af8c1619b4288e74e9d4ef94fc, type: 3}
+  m_Name: New Conversation Tree Builder Config
+  m_EditorClassIdentifier: 
+  _conversationStarters:
+  - Hello!
+  _shareInformationOptionName: Would you share with me...
+  _requestableInformations:
+  - _information: 0
+    _onlyIfUnknown: 1
+    _optionText: Your name?
+    _discussionText: Would you share your name?
+  - _information: 1
+    _onlyIfUnknown: 1
+    _optionText: Your job?
+    _discussionText: Would you share your job?
+  - _information: 4
+    _onlyIfUnknown: 1
+    _optionText: How much you earn?
+    _discussionText: How much do you earn?

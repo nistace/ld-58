@@ -458,7 +458,7 @@ MonoBehaviour:
   - _key: upperbody
     _renderers:
     - {fileID: 1605803573951472172}
-  - _key: head
+  - _key: skin
     _renderers:
     - {fileID: 3583360883251683307}
 --- !u!1 &8397836061063578188

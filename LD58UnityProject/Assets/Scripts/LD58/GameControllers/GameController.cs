@@ -1,5 +1,6 @@
 using System.Linq;
 using LD58.Characters;
+using LD58.Characters.Data;
 using LD58.Jobs;
 using LD58.Locations;
 using LD58.Misc;
@@ -13,6 +14,7 @@ namespace LD58.GameControllers
         [SerializeField] private NpcManager _npcManager;
         [SerializeField] private JobDefinition[] _allJobs;
         [SerializeField] private ColorableGroupsConfiguration[] _allNpcOutfits;
+        [SerializeField] private string[] _npcNames;
         [SerializeField] private int _npcCountToGenerate = 2;
 
         private void Start()
@@ -24,15 +26,19 @@ namespace LD58.GameControllers
         {
             var randomNpcJobs = _allJobs.OrderBy( _ => Random.value ).Take( _npcCountToGenerate ).ToArray();
             var randomNpcOutfits = _allNpcOutfits.OrderBy( _ => Random.value ).Take( _npcCountToGenerate ).ToArray();
+            var randomNpcNames = _npcNames.OrderBy( _ => Random.value ).Take( _npcCountToGenerate ).ToArray();
 
             for( var npcIndex = 0; npcIndex < _npcCountToGenerate; ++npcIndex )
             {
                 var npcJobDefinition = randomNpcJobs[ npcIndex ];
                 var npcOutfit = randomNpcOutfits[ npcIndex ];
+                var npcName = randomNpcNames[ npcIndex ];
                 var job = new Job( npcJobDefinition, _locationMap.InstantiateLocationInRandomSpot( npcJobDefinition.LocationPrefab ) );
                 var house = _locationMap.InstantiateHouseInRandomSpot();
 
-                _npcManager.CreateNpc( house, job, 0, npcOutfit );
+                var info = new NpcInfo( house, 0, job, npcName );
+
+                _npcManager.CreateNpc( info, npcOutfit );
             }
         }
     }
