@@ -1,5 +1,6 @@
 using LD58.Conversations;
 using LD58.Records;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -44,6 +45,19 @@ public class RecordBookUi : MonoBehaviour
         _updatedRecords[ updatedRecord ] = Time.time + _updateDuration;
 
         RefreshVisibleRecords();
+    }
+
+    private void Update()
+    {
+        if( _updatedRecords.Any( t => t.Value > Time.time ) )
+        {
+            foreach( var updatedRecordToRemove in _updatedRecords.Where( t => t.Value > Time.time ).ToArray() )
+            {
+                _updatedRecords.Remove( updatedRecordToRemove.Key );
+            }
+
+            RefreshVisibleRecords();
+        }
     }
 
     private void HandleNewRecord( NpcRecord newRecord )

@@ -20,10 +20,13 @@ namespace LD58.Characters.Data
         [SerializeField] private Job _job;
 
         public Location Home => _home;
+        public string Name => _name;
         public int Money => _money;
         public Job Job => _job;
         public Vector3 CurrentLocation { get; set; }
         public EStates State { get; private set; }
+        public float WorkTimeTodayNormalized { get; set; }
+        public bool WorkedEnoughToday => WorkTimeTodayNormalized >= Job.JobDefinition.NeededTimeNormalizedToGetPaid;
 
         public NpcInfo( Location home, int money, Job job, string name )
         {
@@ -46,5 +49,12 @@ namespace LD58.Characters.Data
                 State &= ~states;
             }
         }
+
+        public void ResetDailyInformation()
+        {
+            WorkTimeTodayNormalized = 0;
+        }
+
+        public void GetPaid() => _money += Job.JobDefinition.Pay;
     }
 }

@@ -8,5 +8,6 @@ namespace LD58.Characters.NpcBehaviours
         public abstract bool CheckConditions( NpcInfo info );
         public abstract Vector3 GetTargetLocation( NpcInfo info );
         public abstract string ToDisplayString();
+        public abstract void ActAtDestination( NpcInfo info, float deltaTime );
     }
 }

@@ -12,11 +12,14 @@ namespace LD58.Characters
 
         private List<NpcCharacter> ActiveNpcList { get; } = new();
 
+        private int LastDayUpdate { get; set; }
+
         public NpcCharacter CreateNpc( NpcInfo info, ColorableGroupsConfiguration outfit )
         {
             var npcCharacter = Instantiate( _npcCharacterPrefab, info.Home.Entrance.position, quaternion.identity );
 
             npcCharacter.Info = info;
+            info.ResetDailyInformation();
             npcCharacter.SetOutfit( outfit );
 
             ActiveNpcList.Add( npcCharacter );
@@ -26,6 +29,16 @@ namespace LD58.Characters
 
         private void Update()
         {
+            if( GameTimeManager.Day > LastDayUpdate )
+            {
+                foreach( var npc in ActiveNpcList )
+                {
+                    npc.Info.ResetDailyInformation();
+                }
+
+                LastDayUpdate = GameTimeManager.Day;
+            }
+
             foreach( var npc in ActiveNpcList )
             {
                 npc.Tick( Time.deltaTime );

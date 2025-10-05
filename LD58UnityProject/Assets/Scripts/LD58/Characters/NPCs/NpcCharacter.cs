@@ -7,7 +7,6 @@ namespace LD58.Characters
 {
     [RequireComponent( typeof(Character) )]
     public class NpcCharacter : MonoBehaviour, ICharacterMovementHandler, ICharacterConversationHandler
-
     {
         [SerializeField] private Character _character;
         [SerializeField] private NpcBrain _brain;
@@ -48,18 +47,27 @@ namespace LD58.Characters
 
             var targetPosition = _info.CurrentLocation;
 
-            if( Brain.TryPickBehaviour( _info, out var behaviour ) )
+            var hasBehaviour = Brain.TryPickBehaviour( _info, out var behaviour );
+
+            if( hasBehaviour )
             {
                 targetPosition = behaviour.GetTargetLocation( Info );
             }
 
-            MoveTowards( targetPosition, deltaTime );
+            MoveTowards( targetPosition, deltaTime, out var atDestination );
+
+            if( atDestination && hasBehaviour )
+            {
+                behaviour.ActAtDestination( Info, deltaTime );
+            }
         }
 
-        public void MoveTowards( Vector3 destination, float deltaTime )
+        public void MoveTowards( Vector3 destination, float deltaTime, out bool atDestination )
         {
             NormalVelocity = Vector3.ClampMagnitude( destination - transform.position, 1 );
             transform.position = Vector3.MoveTowards( transform.position, destination, _character.CharacterConfig.MovementSpeed * deltaTime );
+
+            atDestination = transform.position == destination;
         }
 
         public bool HasBehaviour( NpcBehaviour npcBehaviour ) => Brain.HasBehaviour( npcBehaviour );
