@@ -68,6 +68,8 @@ public class RecordBookUi : MonoBehaviour
             var npcRecordUi = Instantiate( _npcRecordUiPrefab, _npcRecordsContainer );
             _npcRecordUis.Add( newRecord, npcRecordUi );
 
+            npcRecordUi.RecordUi.SetRecordTitle( $"Income Unit #{_orderedRecords.Count:000}" );
+
             RefreshAnchors();
         }
 

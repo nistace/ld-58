@@ -15,11 +15,11 @@ namespace LD58.Characters.Data
         }
 
         [SerializeField] private string _name;
-        [SerializeField] private Location _home;
+        [SerializeField] private House _home;
         [SerializeField] private int _money;
         [SerializeField] private Job _job;
 
-        public Location Home => _home;
+        public House Home => _home;
         public string Name => _name;
         public int Money => _money;
         public Job Job => _job;
@@ -28,7 +28,7 @@ namespace LD58.Characters.Data
         public float WorkTimeTodayNormalized { get; set; }
         public bool WorkedEnoughToday => WorkTimeTodayNormalized >= Job.JobDefinition.NeededTimeNormalizedToGetPaid;
 
-        public NpcInfo( Location home, int money, Job job, string name )
+        public NpcInfo( House home, int money, Job job, string name )
         {
             _home = home;
             _money = money;

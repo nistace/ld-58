@@ -1,10 +1,13 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 public class RecordUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
+    [SerializeField] private TMP_Text _recordTitle;
     [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private GameObject _unlockedObject;
     [SerializeField] private Transform _anchor;
     [SerializeField] private bool _visible;
     [SerializeField] private float _rotation;
@@ -94,6 +97,7 @@ public class RecordUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
             _dragging = true;
             _locked = true;
+            _unlockedObject.SetActive( false );
         }
     }
 
@@ -107,6 +111,9 @@ public class RecordUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if( eventData.button == PointerEventData.InputButton.Right )
         {
             _locked = false;
+            _unlockedObject.SetActive( true );
         }
     }
+
+    public void SetRecordTitle( string value ) => _recordTitle.text = value;
 }

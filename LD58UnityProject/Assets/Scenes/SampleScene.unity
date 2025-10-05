@@ -1793,7 +1793,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1f33a2af544f7c891055fe4f43896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _housePrefab: {fileID: 8433606143591159320, guid: 2607f48c67d8b054480c61315538556d, type: 3}
+  _housePrefabs:
+  - {fileID: 9007821468722315644, guid: 9512742a07281d248ac8154189f17859, type: 3}
+  - {fileID: 9007821468722315644, guid: 1cd15437b573cec46a3f051b081ccd26, type: 3}
+  - {fileID: 9007821468722315644, guid: 1326c5f1b2d97a940a9a2fb54584091e, type: 3}
   _spots:
   - {fileID: 621495405}
   - {fileID: 296239712}

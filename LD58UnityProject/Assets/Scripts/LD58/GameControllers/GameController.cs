@@ -33,7 +33,7 @@ namespace LD58.GameControllers
                 var npcJobDefinition = randomNpcJobs[ npcIndex ];
                 var npcOutfit = randomNpcOutfits[ npcIndex ];
                 var npcName = randomNpcNames[ npcIndex ];
-                var job = new Job( npcJobDefinition, _locationMap.InstantiateLocationInRandomSpot( npcJobDefinition.LocationPrefab ) );
+                var job = new Job( npcJobDefinition, _locationMap.InstantiateInRandomSpot( npcJobDefinition.LocationPrefab ) );
                 var house = _locationMap.InstantiateHouseInRandomSpot();
 
                 var info = new NpcInfo( house, 0, job, npcName );

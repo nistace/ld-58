@@ -1,38 +1,50 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
-namespace LD58.Locations {
-   public class LocationMap : MonoBehaviour {
-      [ SerializeField ] private Location _housePrefab;
-      [ SerializeField ] private LocationSpot[] _spots;
 
-      private HashSet<LocationSpot> TakenSpots { get; } = new();
+namespace LD58.Locations
+{
+    public class LocationMap : MonoBehaviour
+    {
+        [SerializeField] private House[] _housePrefabs;
+        [SerializeField] private LocationSpot[] _spots;
 
-      public Location InstantiateHouseInRandomSpot() => InstantiateLocationInRandomSpot(_housePrefab);
+        private HashSet<LocationSpot> TakenSpots { get; } = new();
 
-      public Location InstantiateLocationInRandomSpot(Location prefab) {
-         var spot = _spots.Where(t => !TakenSpots.Contains(t)).OrderBy(_ => Random.value).FirstOrDefault();
+        public House InstantiateHouseInRandomSpot()
+        {
+            var randomHousePrefab = _housePrefabs[ Random.Range( 0, _housePrefabs.Length ) ];
 
-         if (!spot) {
-            return default;
-         }
+            return InstantiateInRandomSpot( randomHousePrefab );
+        }
 
-         TakenSpots.Add(spot);
+        public T InstantiateInRandomSpot<T>( T prefab ) where T : Object
+        {
+            var spot = _spots.Where( t => !TakenSpots.Contains( t ) ).OrderBy( _ => Random.value ).FirstOrDefault();
 
-         return Instantiate(prefab, spot.transform);
-      }
+            if( !spot )
+            {
+                return default;
+            }
 
-      private void OnDrawGizmos() {
-         Gizmos.color = Color.cyan;
+            TakenSpots.Add( spot );
 
-         foreach (var spot in _spots) {
-            Gizmos.DrawSphere(spot.transform.position, 0.1f);
-         }
-      }
+            return Instantiate( prefab, spot.transform );
+        }
 
-      [ ContextMenu("Gather Spots") ]
-      private void GatherSpots() => _spots = GetComponentsInChildren<LocationSpot>();
-   }
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.cyan;
+
+            foreach( var spot in _spots )
+            {
+                Gizmos.DrawSphere( spot.transform.position, 0.1f );
+            }
+        }
+
+        [ContextMenu( "Gather Spots" )]
+        private void GatherSpots() => _spots = GetComponentsInChildren<LocationSpot>();
+    }
 }
