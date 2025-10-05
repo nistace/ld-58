@@ -1,5 +1,4 @@
 using LD58.Records;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,9 +10,9 @@ public class NpcRecordUi : MonoBehaviour
     [SerializeField] private ColorableImagesHolder _picture;
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _jobText;
-    [SerializeField] private TMP_Text _payText;
+    [SerializeField] private TMP_Text _houseQuality;
+    [SerializeField] private TMP_Text _regime;
     [SerializeField] private TMP_Text _lastTaxText;
-    [SerializeField] private TMP_Text _routineText;
 
     public RecordUi RecordUi => _recordUi;
 
@@ -27,40 +26,20 @@ public class NpcRecordUi : MonoBehaviour
     {
         _picture.Colorize( record.Npc.Outfit );
         _nameText.text = $"Name: {record.GetOrDefault( NpcRecord.EInformation.Name )}";
-
-        if( record.IsKnown( NpcRecord.EInformation.JobName ) || record.IsKnown( NpcRecord.EInformation.JobStartTime ) || record.IsKnown( NpcRecord.EInformation.JobEndTime ) )
-        {
-            _jobText.text = $"Job: {record.GetOrDefault( NpcRecord.EInformation.JobName )}, "
-                + $"{record.GetOrDefault( NpcRecord.EInformation.JobStartTime )}-{record.GetOrDefault( NpcRecord.EInformation.JobEndTime )}";
-        }
-        else
-        {
-            _jobText.text = "Job: ?";
-        }
-
-        _payText.text = record.GetOrDefault( NpcRecord.EInformation.JobPay );
-        if( _payText.text != "?" ) _payText.text = $"${_payText.text}";
-        _payText.text = "Pay: " + _payText.text;
+        _jobText.text = $"Job: {record.GetOrDefault( NpcRecord.EInformation.JobName )}";
+        _houseQuality.text = $"Living: {record.GetOrDefault( NpcRecord.EInformation.HouseQuality )}";
+        _regime.text = $"Regime: {record.GetOrDefault( NpcRecord.EInformation.Food )}";
 
         _lastTaxText.text = "Last Tax: ?";
 
         if( record.TryGet( NpcRecord.EInformation.LastTaxAmount, out var lastTaxAmount ) )
         {
-            _lastTaxText.text = $"${lastTaxAmount}";
+            _lastTaxText.text = $"Last Tax: ${lastTaxAmount}";
         }
 
         if( record.TryGet( NpcRecord.EInformation.LastTaxDay, out var lastTaxDay ) )
         {
             _lastTaxText.text += ", on Day " + lastTaxDay;
-        }
-
-        if( record.IsAnyRoutineKnown() )
-        {
-            _routineText.text = "Routines: " + string.Join( ", ", record.KnownBehaviours.Select( t => t.ToDisplayString() ) );
-        }
-        else
-        {
-            _routineText.text = "Routines: ?";
         }
     }
 }

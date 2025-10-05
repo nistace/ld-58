@@ -9,13 +9,17 @@ namespace LD58.Locations
     public class LocationMap : MonoBehaviour
     {
         [SerializeField] private House[] _housePrefabs;
+        [SerializeField] private Restaurant[] _restaurantPrefabs;
         [SerializeField] private LocationSpot[] _spots;
 
         private HashSet<LocationSpot> TakenSpots { get; } = new();
 
-        public House InstantiateHouseInRandomSpot()
+        public House InstantiateHouseInRandomSpot() => InstantiateRandomInRandomSpot( _housePrefabs );
+        public Restaurant InstantiateRestaurantInRandomSpot() => InstantiateRandomInRandomSpot( _restaurantPrefabs );
+
+        private T InstantiateRandomInRandomSpot<T>( T[] items ) where T : Object
         {
-            var randomHousePrefab = _housePrefabs[ Random.Range( 0, _housePrefabs.Length ) ];
+            var randomHousePrefab = items[ Random.Range( 0, items.Length ) ];
 
             return InstantiateInRandomSpot( randomHousePrefab );
         }
@@ -46,5 +50,7 @@ namespace LD58.Locations
 
         [ContextMenu( "Gather Spots" )]
         private void GatherSpots() => _spots = GetComponentsInChildren<LocationSpot>();
+
+        public HousePrestige[] GetDistinctHousePrestigeLevels() => _housePrefabs.Select( t => t.Prestige ).Distinct().ToArray();
     }
 }

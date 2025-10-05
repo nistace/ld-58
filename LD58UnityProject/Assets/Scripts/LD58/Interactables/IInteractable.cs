@@ -8,6 +8,8 @@ namespace LD58.Interactables
         Vector3 Position { get; }
         string InteractionDisplayText { get; }
         Vector3 TooltipWorldAnchor { get; }
+        bool IsInteractable { get; }
+        float PriorityFactor { get; }
 
         void Interact();
     }

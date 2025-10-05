@@ -10,6 +10,7 @@ namespace LD58.Characters
         }
 
         [SerializeField] private CharacterConfig _characterConfig;
+        [SerializeField] private Transform _conversationBubbleWorldAnchor;
 
         public EStates States
         {
@@ -18,5 +19,6 @@ namespace LD58.Characters
         }
 
         public CharacterConfig CharacterConfig => _characterConfig;
+        public Transform ConversationBubbleWorldAnchor => _conversationBubbleWorldAnchor;
     }
 }

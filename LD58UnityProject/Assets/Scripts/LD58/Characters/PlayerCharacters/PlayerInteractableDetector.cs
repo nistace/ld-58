@@ -7,26 +7,32 @@ namespace LD58.Characters.PlayerCharacters
 {
     public class PlayerInteractableDetector : MonoBehaviour
     {
-        private readonly HashSet<IInteractable> _interactablesInRange = new();
+        [SerializeField] private SphereCollider _sphereCollider;
+        private readonly Dictionary<Collider, IInteractable> _interactablesInRange = new();
 
         public bool TryGetInteractable( out IInteractable closest )
         {
-            closest = _interactablesInRange.OrderBy( t => Vector3.SqrMagnitude( transform.position - t.Position ) ).FirstOrDefault();
+            closest = _interactablesInRange
+                .Values
+                .Where( t => t.IsInteractable )
+                .Where( t => Vector3.SqrMagnitude( t.Position - _sphereCollider.transform.position ) < _sphereCollider.radius * _sphereCollider.radius )
+                .OrderBy( t => -t.PriorityFactor )
+                .ThenBy( t => Vector3.SqrMagnitude( transform.position - t.Position ) )
+                .FirstOrDefault();
 
             return closest != null;
         }
 
         private void OnTriggerEnter( Collider other )
         {
-            if( other.gameObject.TryGetComponent<IInteractable>( out var interactable ) )
+            var interactable = other.gameObject.GetComponentInParent<IInteractable>();
+
+            if( interactable != null )
             {
-                _interactablesInRange.Add( interactable );
+                _interactablesInRange[ other ] = interactable;
             }
         }
 
-        private void OnTriggerExit( Collider other )
-        {
-            _interactablesInRange.RemoveWhere( t => t.gameObject == other.gameObject );
-        }
+        private void OnTriggerExit( Collider other ) => _interactablesInRange.Remove( other );
     }
 }

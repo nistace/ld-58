@@ -14,24 +14,9 @@ namespace LD58.Conversations
 
         public ConversationTree( NpcRecord record, ConversationTreeBuilderConfig config )
         {
-            var shareInformationSubNodes = new List<ConversationNode>();
-
-            foreach( var requestableInformation in config.RequestableInformations )
-            {
-                if( !requestableInformation.OnlyIfUnknown || !record.IsKnown( requestableInformation.Information ) )
-                {
-                    shareInformationSubNodes.Add( new AskInformationConversationNode( requestableInformation.Information,
-                            requestableInformation.OptionText,
-                            requestableInformation.DiscussionText
-                        )
-                    );
-                }
-            }
-
-            if( shareInformationSubNodes.Count > 0 )
-            {
-                _roots.Add( new ConversationNode( config.ShareInformationOptionName, shareInformationSubNodes.ToArray() ) );
-            }
+            _roots.Add( new NameConversationNode( "Ask name", config.RandomAskNameLine ) );
+            _roots.Add( new TaxConversationNode( "Calculate tax", config.RandomTaxConversationLine ) );
+            _roots.Add( new EndConversationNode( "End conversation", config.RandomEndConversationLine ) );
         }
     }
 }

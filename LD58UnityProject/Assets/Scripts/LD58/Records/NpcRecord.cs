@@ -12,28 +12,17 @@ namespace LD58.Records
     {
         public enum EInformation
         {
-            Name = 0,
-            JobName = 1,
-            JobStartTime = 2,
-            JobEndTime = 3,
-            JobPay = 4,
-            LastTaxAmount = 5,
-            LastTaxDay = 6
-        }
-
-        public enum EDetailedInformation
-        {
-            Routines = 0
+            Name,
+            JobName,
+            HouseQuality,
+            LastTaxAmount,
+            LastTaxDay,
+            Food
         }
 
         [SerializeField] private NpcCharacter _npc;
-        [SerializeField] private string[] _knownInformation;
 
-        private HashSet<NpcBehaviour> _knownBehaviours = new();
-        private HashSet<EInformation> _newlyLearnedInformation = new();
-        private HashSet<NpcBehaviour> _newlyLearnedBehaviours = new();
-
-        public IEnumerable<NpcBehaviour> KnownBehaviours => _knownBehaviours;
+        private HashSet<EInformation> _knownInformation = new();
 
         public UnityEvent OnNewInformationLearned { get; } = new();
 
@@ -42,49 +31,50 @@ namespace LD58.Records
         public NpcRecord( NpcCharacter npc )
         {
             _npc = npc;
-            _knownInformation = new string[ Enum.GetValues( typeof(EInformation) ).Length ];
         }
 
         public void Learn( NpcBehaviour npcBehaviour )
         {
             if( !_npc.HasBehaviour( npcBehaviour ) ) return;
 
-            if( !_knownBehaviours.Add( npcBehaviour ) ) return;
-
-            _newlyLearnedBehaviours.Add( npcBehaviour );
             OnNewInformationLearned.Invoke();
         }
 
-        public void Learn( EInformation information, string value )
+        public void Learn( EInformation information )
         {
-            if( _knownInformation[ ( int )information ] == value )
+            if( !_knownInformation.Add( information ) )
             {
                 return;
             }
 
-            _knownInformation[ ( int )information ] = value;
-            _newlyLearnedInformation.Add( information );
-
             OnNewInformationLearned.Invoke();
-        }
-
-        public void ResetNewlyLearnedInformation()
-        {
-            _newlyLearnedInformation.Clear();
-            _newlyLearnedBehaviours.Clear();
         }
 
         public string GetOrDefault( EInformation information, string defaultValue = "?" ) => TryGet( information, out var value ) ? value : defaultValue;
 
         public bool TryGet( EInformation information, out string value )
         {
-            value = _knownInformation[ ( int )information ];
+            if( _knownInformation.Contains( information ) )
+            {
+                value = information switch
+                {
+                    EInformation.Name => Npc.Info.Name,
+                    EInformation.JobName => Npc.Info.Job.JobDefinition.JobName,
+                    EInformation.HouseQuality => Npc.Info.Home.Prestige.DisplayName,
+                    EInformation.Food => Npc.Info.FoodType.DisplayName,
+                    EInformation.LastTaxAmount => $"{Npc.Info.LastTaxAmount}",
+                    EInformation.LastTaxDay => $"{Npc.Info.LastTaxDay}",
+                    _ => string.Empty
+                };
 
-            return !string.IsNullOrEmpty( value );
+                return true;
+            }
+
+            value = default;
+
+            return false;
         }
 
-        public bool IsKnown( EInformation information ) => !string.IsNullOrEmpty( _knownInformation[ ( int )information ] );
-
-        public bool IsAnyRoutineKnown() => _knownBehaviours.Count > 0;
+        public bool IsKnown( EInformation information ) => _knownInformation.Contains( information );
     }
 }

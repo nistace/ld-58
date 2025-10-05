@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113b92c7ec69438ab817b10c5d55718c, type: 3}
   m_Name: SmallHouse
   m_EditorClassIdentifier: 
+  _displayName: Small House

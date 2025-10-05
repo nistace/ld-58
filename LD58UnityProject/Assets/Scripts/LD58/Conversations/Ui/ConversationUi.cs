@@ -12,19 +12,27 @@ namespace LD58.Conversations.Ui
         [SerializeField] private GameObject _pathContainer;
         [SerializeField] private GameObject _conversationButtonsContainer;
         [SerializeField] private ConversationButtonUi[] _conversationButtons;
+        [SerializeField] private bool _showPath;
 
         private readonly List<ConversationNode> _pathNodes = new();
 
         private void Start()
         {
-            _pathContainer.SetActive( _conversationManager.IsConversationOnGoing );
+            _pathContainer.SetActive( _showPath && _conversationManager.IsConversationOnGoing );
             _conversationButtonsContainer.SetActive( false );
             RefreshPathText();
 
             _conversationManager.OnConversationTreeGenerated.AddListener( HandleConversationTreeGenerated );
             _conversationManager.OnConversationStarted.AddListener( HandleConversationStarted );
             _conversationManager.OnConversationEnded.AddListener( HandleConversationEnded );
+            _conversationManager.OnConversationOptionSelected.AddListener( HandleConversationOptionSelected );
             ConversationButtonUi.OnConversationButtonClicked.AddListener( HandleButtonClicked );
+        }
+
+        private void HandleConversationOptionSelected()
+        {
+            _pathContainer.SetActive( false );
+            _conversationButtonsContainer.SetActive( false );
         }
 
         private void HandleConversationEnded( Conversation _ )
@@ -37,7 +45,7 @@ namespace LD58.Conversations.Ui
         {
             _pathNodes.Clear();
             RefreshPathText();
-            _pathContainer.gameObject.SetActive( true );
+            _pathContainer.gameObject.SetActive( _showPath );
         }
 
         private void RefreshPathText() => _pathText.text = string.Join( " > ", _pathNodes.Select( t => t.OptionText ) );

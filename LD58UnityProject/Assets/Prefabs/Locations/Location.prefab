@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entrance: {fileID: 1796367467884504732}
+  _canEnter: 1
 --- !u!1 &7928086921485387270
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,37 +213,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5736834565986778043, guid: f59c31ce22a86294ab3ae9b5ad85110e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736834565986778043, guid: f59c31ce22a86294ab3ae9b5ad85110e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736834565986778043, guid: f59c31ce22a86294ab3ae9b5ad85110e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736834565986778043, guid: f59c31ce22a86294ab3ae9b5ad85110e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6938769983125388761, guid: f59c31ce22a86294ab3ae9b5ad85110e, type: 3}
       propertyPath: m_Name
       value: LocationVisuals
-      objectReference: {fileID: 0}
-    - target: {fileID: 8970373449929482801, guid: f59c31ce22a86294ab3ae9b5ad85110e, type: 3}
-      propertyPath: m_Size.x
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8970373449929482801, guid: f59c31ce22a86294ab3ae9b5ad85110e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 2136089531, guid: 421cfc3f584e2f345bb37a8678b16c33, type: 3}
-    - target: {fileID: 8970373449929482801, guid: f59c31ce22a86294ab3ae9b5ad85110e, type: 3}
-      propertyPath: m_DrawMode
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

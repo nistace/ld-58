@@ -13,6 +13,8 @@ namespace LD58.Conversations
         public Vector3 Position => transform.position;
         public string InteractionDisplayText => "Talk";
         public Vector3 TooltipWorldAnchor => _tooltipWorldAnchor.position;
+        public bool IsInteractable => _conversationTarget.gameObject.activeSelf;
+        public float PriorityFactor => 0;
         public NpcCharacter ConversationTarget => _conversationTarget;
 
         public static UnityEvent<ConversationStarterInteractable> OnConversationRequested { get; } = new();

@@ -1,16 +1,17 @@
-using System;
 using UnityEngine;
 
 namespace LD58
 {
     public class GameTimeManager : MonoBehaviour
     {
-        private static GameTimeManager instance { get; set; }
+        private static GameTimeManager Instance { get; set; }
+        public const int HOURS_IN_DAY = 12;
+        public const float TIME_PER_HOUR_NORMALIZED = 1f / HOURS_IN_DAY;
 
-        public static int Day => instance ? Mathf.FloorToInt( instance._absoluteTime ) : 1;
-        public static float TimeInDay => instance ? TimeInDayNormalized * instance._timeInDay : 0;
-        public static float TimeInDayNormalized => instance ? instance._absoluteTime % 1 : 0;
-        public static float ActionSpeedCoefficient => instance ? instance._actionSpeedCoefficient : 0;
+        public static int Day => 1 + ( Instance ? Mathf.FloorToInt( Instance._absoluteTime ) : 0 );
+        public static float TimeInDay => Instance ? TimeInDayNormalized * Instance._timeInDay : 0;
+        public static float TimeInDayNormalized => Instance ? Instance._absoluteTime % 1 : 0;
+        public static float ActionSpeedCoefficient => Instance ? Instance._actionSpeedCoefficient : 0;
 
         private float _absoluteTime;
 
@@ -19,7 +20,7 @@ namespace LD58
 
         private void Awake()
         {
-            instance = this;
+            Instance = this;
         }
 
         private void Update()

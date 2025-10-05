@@ -8,6 +8,7 @@ namespace LD58.Characters.PlayerCharacters
         [SerializeField] private Character _character;
 
         public Character Character => _character;
+        public Transform ConversationBubbleWorldAnchor => Character.ConversationBubbleWorldAnchor;
 
         private void Reset()
         {

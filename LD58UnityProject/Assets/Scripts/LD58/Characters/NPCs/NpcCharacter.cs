@@ -1,6 +1,7 @@
 using LD58.Characters.Data;
 using LD58.Characters.NpcBehaviours;
 using LD58.Misc;
+using LD58.Records;
 using UnityEngine;
 
 namespace LD58.Characters
@@ -12,8 +13,11 @@ namespace LD58.Characters
         [SerializeField] private NpcBrain _brain;
         [SerializeField] private ColorableSpritesHolder _outfitBodyParts;
         [SerializeField] private NpcInfo _info;
+        [SerializeField] private NpcRecord.EInformation _revealingInformation;
+
         public Vector3 NormalVelocity { get; private set; }
         public NpcBrain Brain => _brain;
+        public Character Character => _character;
 
         public ColorableGroupsConfiguration Outfit { get; private set; }
 
@@ -58,8 +62,14 @@ namespace LD58.Characters
 
             if( atDestination && hasBehaviour )
             {
-                behaviour.ActAtDestination( Info, deltaTime );
+                behaviour.AddTimeAtDestination( Info, deltaTime );
             }
+
+            var visible = !hasBehaviour;
+            visible |= !atDestination;
+            visible |= behaviour && !behaviour.CanGoInside( Info );
+
+            gameObject.SetActive( visible );
         }
 
         public void MoveTowards( Vector3 destination, float deltaTime, out bool atDestination )
@@ -71,5 +81,17 @@ namespace LD58.Characters
         }
 
         public bool HasBehaviour( NpcBehaviour npcBehaviour ) => Brain.HasBehaviour( npcBehaviour );
+
+        public bool IsRevealingInformation( out NpcRecord.EInformation revealingInformation, out float revealingDuration )
+        {
+            revealingInformation = default;
+            revealingDuration = .5f;
+
+            if( !gameObject.activeSelf ) return false;
+            if( !Brain.TryPickBehaviour( _info, out var behaviour ) ) return false;
+            if( transform.position != behaviour.GetTargetLocation( Info ) ) return false;
+
+            return behaviour.CanRevealInformation( out revealingInformation, out revealingDuration );
+        }
     }
 }

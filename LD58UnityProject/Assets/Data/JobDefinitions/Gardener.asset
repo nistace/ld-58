@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32706180c42feab42bf6fd3bb82ac188, type: 3}
   m_Name: Gardener
   m_EditorClassIdentifier: 
-  _pay: 100
-  _workingStartTimeNormalized: 0.2
-  _workingEndTimeNormalized: 0.6
+  _possiblePays: 320000003c00000046000000
+  _workingStartTimeNormalized:
+  - 0.35
+  - 0.45
+  - 0.55
+  _workingEndTimeNormalized:
+  - 0.5
+  - 0.6
+  - 0.7
+  _presetLocation: {fileID: 11400000, guid: f6bdae2a8bcd66a469dd29d7f07041bd, type: 2}
   _locationPrefab: {fileID: 8433606143591159320, guid: 2607f48c67d8b054480c61315538556d, type: 3}
