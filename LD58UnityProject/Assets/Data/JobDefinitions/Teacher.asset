@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32706180c42feab42bf6fd3bb82ac188, type: 3}
-  m_Name: Software Developer
+  m_Name: Teacher
   m_EditorClassIdentifier: 
   _possiblePays: 28000000320000003c00000046000000
   _workingStartTimeNormalized:
   - 0.3
   _workingEndTimeNormalized:
   - 0.6
-  _presetLocation: {fileID: 0}
-  _locationPrefab: {fileID: 8433606143591159320, guid: 2607f48c67d8b054480c61315538556d, type: 3}
+  _presetLocation: {fileID: 11400000, guid: 57865e98e07a0d743a86112f90806cd2, type: 2}
+  _locationPrefab: {fileID: 7089996414872213972, guid: ffc00f21f59ecde478e4d8aec89787a0, type: 3}

@@ -1,5 +1,6 @@
 using LD58.Characters.Data;
 using LD58.Locations;
+using LD58.Records;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace LD58.Taxes
         public int EvaluateCorrectTax( NpcInfo npcInfo )
         {
             var tax = 0;
-            tax += Mathf.CeilToInt( npcInfo.Job.Pay * _jobPayTax );
+            tax += Mathf.CeilToInt( JobRecord.Current.ActiveJobsIncomes[ npcInfo.Job.JobDefinition ] * _jobPayTax );
             tax += FoodTaxes[ npcInfo.FoodType ];
             tax += HousingTaxes[ npcInfo.Home.Prestige ];
 

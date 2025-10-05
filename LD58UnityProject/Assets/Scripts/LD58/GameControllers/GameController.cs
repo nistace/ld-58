@@ -8,6 +8,7 @@ using LD58.Records;
 using LD58.Taxes;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 namespace LD58.GameControllers

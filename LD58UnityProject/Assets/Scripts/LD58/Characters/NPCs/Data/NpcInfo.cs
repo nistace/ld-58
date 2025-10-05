@@ -78,8 +78,6 @@ namespace LD58.Characters.Data
             TimeNormalizedAtDestinationToday.Clear();
         }
 
-        public void GetPaid() => _money += Job.Pay;
-
         public void AddTimeAtAction( Object key, float additionalTime )
         {
             TimeNormalizedAtDestinationToday.TryAdd( key, 0 );

@@ -21,7 +21,7 @@ namespace LD58.Records
             }
         }
 
-        public Dictionary<JobDefinition, int> ActiveJobsIncomes { get; }
+        public IReadOnlyDictionary<JobDefinition, int> ActiveJobsIncomes { get; }
         public bool KnownIncomes { get; private set; }
 
         public static UnityEvent OnChanged { get; } = new();
@@ -40,16 +40,6 @@ namespace LD58.Records
         public void ForgetIncomes()
         {
             KnownIncomes = false;
-            OnChanged.Invoke();
-        }
-
-        public void ChangeIncomes()
-        {
-            foreach( var job in ActiveJobsIncomes.Keys.ToArray() )
-            {
-                ActiveJobsIncomes[ job ] = job.RandomPay;
-            }
-
             OnChanged.Invoke();
         }
     }

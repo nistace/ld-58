@@ -32,7 +32,7 @@ public class TaxRulesRecordUi : MonoBehaviour
     {
         _text.text = _taxRuleTemplate
             .Replace( "{jobTax}", $"{TaxRules.Current.JobPayTax * 100}" )
-            .Replace( "{housingTax}", string.Join( "<br>   - ", TaxRules.Current.HousingTaxes.Select( t => $"{t.Key.DisplayName}: {t.Value}" ) ) )
+            .Replace( "{housingTax}", string.Join( "", TaxRules.Current.HousingTaxes.Select( t => $"<br>   - {t.Key.DisplayName}: {t.Value}" ) ) )
             .Replace( "{taxCooldown}", $"{TaxRules.DaysBetweenTwoCollections}" );
     }
 }

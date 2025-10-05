@@ -14,7 +14,6 @@ namespace LD58.Jobs
         [SerializeField] private float _endNormalizedTime;
 
         public JobDefinition JobDefinition => _jobDefinition;
-        public int Pay => _pay;
         public Location Location => _location;
 
         public bool IsWithinWorkingHours( float timeInDayNormalized ) => timeInDayNormalized <= _endNormalizedTime && timeInDayNormalized >= _startNormalizedTime;
@@ -22,7 +21,6 @@ namespace LD58.Jobs
         public Job( JobDefinition jobDefinition, Location location )
         {
             _jobDefinition = jobDefinition;
-            _pay = _jobDefinition.RandomPay;
             _location = location;
             jobDefinition.GetRandomWorkingHours( out _startNormalizedTime, out _endNormalizedTime );
         }

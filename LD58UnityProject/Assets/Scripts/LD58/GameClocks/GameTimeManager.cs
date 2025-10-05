@@ -17,15 +17,10 @@ namespace LD58
 
         [SerializeField] private int _timeInDay = 2;
         [SerializeField] private float _actionSpeedCoefficient = 1;
+        public static int TimeScale { get; set; } = 0;
 
-        private void Awake()
-        {
-            Instance = this;
-        }
+        private void Awake() => Instance = this;
 
-        private void Update()
-        {
-            _absoluteTime += Time.deltaTime / _timeInDay;
-        }
+        private void Update() => _absoluteTime += TimeScale * Time.deltaTime / _timeInDay;
     }
 }
