@@ -55,7 +55,7 @@ namespace LD58.GameControllers
 
         private void Update()
         {
-            if( GameTimeManager.Day == 11 )
+            if( GameTimeManager.Day == 11 && GameTimeManager.TimeScale > 0 )
             {
                 GameTimeManager.TimeScale = 0;
                 _conversationManager.EndAny();
