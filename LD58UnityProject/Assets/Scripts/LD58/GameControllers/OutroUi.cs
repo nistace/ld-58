@@ -53,10 +53,10 @@ public class OutroUi : MonoBehaviour
             {
                 total += records.Max( t => t.Amount );
 
-                if( records.Count == 1 ) _text.text += $"You taxed them once for ${records[ 0 ].Amount}";
+                if( records.Count == 1 ) _text.text += $"You taxed them once for ${records[ 0 ].Amount}.";
                 else
                 {
-                    _text.text += $"You taxed them for ${string.Join( ", $", records.Skip( 1 ) )} and ${records[ 0 ]}.";
+                    _text.text += $"You taxed them for ${string.Join( ", $", records.Skip( 1 ).Select( t => t.Amount ) )} and ${records[ 0 ].Amount}.";
                 }
             }
 
