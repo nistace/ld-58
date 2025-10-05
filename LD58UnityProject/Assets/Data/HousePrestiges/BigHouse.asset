@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: BigHouse
   m_EditorClassIdentifier: 
   _displayName: Big House
+  _minTax: 10
+  _maxTax: 20

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: SmallHouse
   m_EditorClassIdentifier: 
   _displayName: Small House
+  _minTax: 2
+  _maxTax: 4

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: MediumHouse
   m_EditorClassIdentifier: 
   _displayName: Medium House
+  _minTax: 5
+  _maxTax: 9
