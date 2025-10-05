@@ -184,5 +184,12 @@ namespace LD58.Conversations
         public void SelectLeafOptionInCurrentConversationTree( ConversationNode leafOption ) => SelectedNodeInCurrentConversation = leafOption;
 
         public void SetTaxAmount( int amount ) => TaxAmount = amount;
+
+        public void EndAny()
+        {
+            ConversationCancellationToken?.Dispose();
+            ConversationCancellationToken?.Cancel();
+            ConversationCancellationToken = null;
+        }
     }
 }

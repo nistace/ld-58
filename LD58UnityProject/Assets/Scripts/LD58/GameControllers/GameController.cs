@@ -1,20 +1,24 @@
 using System.Linq;
 using LD58.Characters;
 using LD58.Characters.Data;
+using LD58.Conversations;
 using LD58.Jobs;
 using LD58.Locations;
 using LD58.Misc;
 using LD58.Records;
 using LD58.Taxes;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace LD58.GameControllers
 {
     public class GameController : MonoBehaviour
     {
+        [SerializeField] private ConversationManager _conversationManager;
         [SerializeField] private LocationMap _locationMap;
         [SerializeField] private NpcManager _npcManager;
         [SerializeField] private JobDefinition[] _allJobs;
@@ -28,6 +32,8 @@ namespace LD58.GameControllers
         [SerializeField] private FoodType[] _foodTypes;
         [SerializeField] private int _foodTypesToUse = 10;
         [SerializeField] private PresetLocation[] _presetLocations;
+
+        [SerializeField] private OutroUi _outroUi;
 
         private readonly Dictionary<PresetLocationIdentifier, HashSet<Location>> _identifiedLocations = new();
 
@@ -45,6 +51,16 @@ namespace LD58.GameControllers
             }
 
             locations.Add( location.Location );
+        }
+
+        private void Update()
+        {
+            if( GameTimeManager.Day == 11 )
+            {
+                GameTimeManager.TimeScale = 0;
+                _conversationManager.EndAny();
+                _outroUi.FillInAndShow();
+            }
         }
 
         private void SetUpGame()

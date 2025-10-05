@@ -11,6 +11,7 @@ namespace LD58.Characters
         [SerializeField] private NpcCharacter _npcCharacterPrefab;
 
         private List<NpcCharacter> ActiveNpcList { get; } = new();
+        public IReadOnlyList<NpcCharacter> AllNpcList => ActiveNpcList;
 
         private int LastDayUpdate { get; set; }
 
