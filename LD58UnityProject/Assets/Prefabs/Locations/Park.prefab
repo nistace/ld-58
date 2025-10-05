@@ -326,6 +326,18 @@ PrefabInstance:
       propertyPath: _canEnter
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8484033962515833215, guid: 2607f48c67d8b054480c61315538556d, type: 3}
+      propertyPath: _hideables.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484033962515833215, guid: 2607f48c67d8b054480c61315538556d, type: 3}
+      propertyPath: _colorables.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484033962515833215, guid: 2607f48c67d8b054480c61315538556d, type: 3}
+      propertyPath: _spritables.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9162234595933204214, guid: 2607f48c67d8b054480c61315538556d, type: 3}
       propertyPath: m_Sprite
       value: 
