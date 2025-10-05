@@ -187,8 +187,8 @@ namespace LD58.Conversations
 
         public void EndAny()
         {
-            ConversationCancellationToken?.Dispose();
             ConversationCancellationToken?.Cancel();
+            ConversationCancellationToken?.Dispose();
             ConversationCancellationToken = null;
         }
     }
